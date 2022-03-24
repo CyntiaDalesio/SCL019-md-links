@@ -2,13 +2,13 @@
 const functions = require('./functions.js');
 const readline = require('readline');
 
-
+let arrayMD = []
 
 function extensionFile(file){
   if (functions.readExtension(file)) {
-    // functions.readFiles(resp);
     console.log(`El archivo ${file} tiene extension .md`);
-    
+    //  functions.readFiles(file);
+    arrayMD.push(file);
   } else {
     console.log(`El archivo ${file} NO tiene extension .md`);
   }
@@ -19,6 +19,7 @@ let interfazCaptura = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
+
 interfazCaptura.question('Ingrese la ruta: ', function (respuesta) {
   let answer = `${respuesta}`;
   console.log(`La ruta ingresada es: ${answer}`);
@@ -35,13 +36,20 @@ interfazCaptura.question('Ingrese la ruta: ', function (respuesta) {
       console.log('lo ingresado es una CARPETA');
       console.log('Tiene los siguientes archivos');
       let array = functions.listFile(answer);
-      
+     
       if (array.length!=0) {
         console.log(array);
         array.forEach(file => {
           extensionFile(file);
         });
-   
+        console.log(arrayMD);
+        // functions.read(arrayMD[1]);
+        arrayMD.forEach(file => {
+          functions.read(file);
+       });
+      // functions.readFiles(arrayMD[0]).then(file => {
+      //   console.log(file);
+      // })
       } else {
         console.log('El array no tiene archivos');
       }
