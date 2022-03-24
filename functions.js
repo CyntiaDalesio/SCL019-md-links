@@ -1,6 +1,6 @@
 // importo con un require lo que necesito
 let fs = require('fs/promises');
-let { constants } = require('fs');
+let { constants, readdir, readdirSync } = require('fs');
 const path = require('path');
 //function para leer la ruta que ingreso
 
@@ -29,9 +29,15 @@ const pathTransformationAbsolute = (resp) => path.resolve(resp);
 function existFile(resp) {
   return fs.access(resp, constants.R_OK);
 }
+// listFile me lista los archivos de una carpeta
+function listFile(resp) {
+  let array = readdirSync(resp);
+  return array;
+}
 
 //exporto las funciones que necesito
 exports.readExtension = readExtension;
 exports.pathAbsolute = pathAbsolute;
 exports.pathTransformationAbsolute = pathTransformationAbsolute;
 exports.existFile = existFile;
+exports.listFile = listFile;

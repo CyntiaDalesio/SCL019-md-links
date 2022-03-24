@@ -7,21 +7,29 @@ let interfazCaptura = readline.createInterface({
   output: process.stdout
 });
 interfazCaptura.question('Ingrese la ruta: ', function (respuesta) {
-  let resp = `${respuesta}`;
-  console.log(`La ruta ingresada es: ${resp}`);
-  
-  functions.existFile(resp).then(() => {
-    if (!functions.pathAbsolute(resp)) {
-      console.log('la ruta ingresada es RELATIVA. . . se transformatá en absoluta');
-      resp = functions.pathTransformationAbsolute(resp);
-      console.log('absoluta: ', resp);
-    }
+  let answer = `${respuesta}`;
+  console.log(`La ruta ingresada es: ${answer}`);
 
-    if (functions.readExtension(resp)) {
+  // functions.listFile(answer).then(() =>{
+  //   console.log('El listado de los archivos es: ',array);
+  // } ).catch((err)=>{
+  //   console.log('El error es:', err);
+  // })
+
+let array = functions.listFile(answer);
+console.log(array);
+  functions.existFile(answer).then(() => {
+    if (!functions.pathAbsolute(answer)) {
+      console.log('la ruta ingresada es RELATIVA. . . se transformatá en absoluta');
+      answer = functions.pathTransformationAbsolute(answer);
+      console.log('absoluta: ', answer);
+    }
+   
+    if (functions.readExtension(answer)) {
       // functions.readFiles(resp);
       console.log('la extension es .md!!');
     } else {
-      console.log('el archivo no contenia extension .md');
+      console.log('el archivo no contiene extension .md');
     }
   }).catch(() => {
     console.log('el archivo no existe');
