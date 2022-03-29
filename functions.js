@@ -53,7 +53,7 @@ function listFile(resp) {
   let array = readdirSync(resp);
   return array;
 }
-// verifico si el path es un archivo o una carpeta
+// verifico si el path es un archivo
 function isFile(resp) {
   var stats = statSync(resp); // metadata
   console.log("Es archivo: ", stats.isFile());
@@ -67,5 +67,4 @@ exports.pathTransformationAbsolute = pathTransformationAbsolute;
 exports.existPath = existPath;
 exports.listFile = listFile;
 exports.isFile = isFile;
-// exports.readFiles= readFiles;
 exports.read = read;

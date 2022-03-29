@@ -13,9 +13,6 @@ let interfazCaptura = readline.createInterface({
 interfazCaptura.question('Ingrese la ruta: ', function (respuesta) {
   answer = `${respuesta}`;
   console.log(`La ruta ingresada es: ${answer}`);
-  //   interfazCaptura.close();
-  // })
-
   if (answer != '') {
     functions.existPath(answer).then(() => {
       if (!functions.pathAbsolute(answer)) {
@@ -24,25 +21,27 @@ interfazCaptura.question('Ingrese la ruta: ', function (respuesta) {
         console.log('absoluta: ', answer);
       }
       return answer;
+    })
+    .then((answer) => {
 
-
-    }).then((answer) => {
-
-      if (!functions.isFile(answer)) throw new TypeError();
+      if (!functions.isFile(answer)) throw new TypeError(console.log('No puede ingresar una carpeta'));
 
       console.log('lo ingresado es un archivo');
       if (functions.verifyExtensionMD(answer)) {
         arrayMD = functions.read(answer);
       }
-
+ 
       return arrayMD;
     })
       .then((arrayMD) => {
         console.log('El arrayMD del then es:', arrayMD);
+
       }).catch((err) => {
         console.log('La ruta  no existe');
-        console.log(err);
+          console.log(err);
       })
+  }else{
+    console.log('No ha ingresado ninguna ruta');
   }
 
 
