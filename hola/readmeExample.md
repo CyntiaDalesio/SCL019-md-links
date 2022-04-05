@@ -9,3 +9,5 @@ Después de estas lineas de código!! habrá más código!!
 https://www.geeksforgeeks.org/javascript-match-function/
 https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
 
+https://seoquito.com/como-encontrar-enlaces-rotos/koñ
+https://neoattack.com/proyectos/
