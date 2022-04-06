@@ -1,7 +1,7 @@
 const readline = require('readline');
 const colors = require('colors/safe');
 const functions = require('./functions.js');
-
+// esto es un comentario
 const arrayJson = [];
 const interfazCaptura = readline.createInterface({
   input: process.stdin,
