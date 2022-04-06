@@ -74,15 +74,9 @@ const pathTransformationAbsolute = (resp) => path.resolve(resp);
 function existPath(resp) {
   return fs.access(resp, constants.R_OK);
 }
-// listFile me lista los archivos de una carpeta
-function listFile(resp) {
-  const array = readdirSync(resp);
-  return array;
-}
 // verifico si el path es un archivo
 function isFile(resp) {
   const stats = statSync(resp); // metadata
-  // console.log('Es archivo: ', stats.isFile());
   return stats.isFile();
 }
 
@@ -91,7 +85,6 @@ exports.verifyExtensionMD = verifyExtensionMD;
 exports.pathAbsolute = pathAbsolute;
 exports.pathTransformationAbsolute = pathTransformationAbsolute;
 exports.existPath = existPath;
-exports.listFile = listFile;
 exports.isFile = isFile;
 exports.read = read;
 exports.verifityLink = verifityLink;
