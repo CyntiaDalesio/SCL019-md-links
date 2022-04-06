@@ -4,14 +4,45 @@ const {
 } = require('fs');
 const path = require('path');
 const readline = require('readline');
-// const http = require('http');
-// const url = require('url');
+const http = require('http');
+const url = require('url');
 
 let arrayLink = [];
 
+function verifityLink(link) {
+  return new Promise((resolve) => {
+    const options = {
+      method: 'HEAD',
+      host: url.parse(link).host,
+      port: 80,
+      path: url.parse(link).pathname,
+    };
+
+    const req = http.request(options, (res) => {
+      const nuevaData = {
+        linkname: link,
+        Code: res.statusCode,
+        status: res.statusCode <= 399,
+      };
+      resolve(nuevaData);
+    });
+
+    req.on('error', (error) => {
+      // console.error(error);
+      const newData = {
+        linkname: link,
+        status: false,
+      };
+      resolve(newData);
+    });
+
+    req.end();
+  });
+}
+
 function read(file) {
   console.log('estoy dentro de read');
-  const promise = new Promise((resolve, reject) => {
+  const promise = new Promise((resolve) => {
     const array = [];
     const lector = readline.createInterface({
       input: createReadStream(file),
@@ -26,7 +57,6 @@ function read(file) {
     }).on('close', () => {
       resolve(array);
     });
-    console.log(reject);
   });
   return promise;
 }
@@ -65,4 +95,4 @@ exports.existPath = existPath;
 exports.listFile = listFile;
 exports.isFile = isFile;
 exports.read = read;
-// exports.api = api;
+exports.verifityLink = verifityLink;

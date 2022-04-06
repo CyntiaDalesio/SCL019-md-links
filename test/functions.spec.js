@@ -9,7 +9,9 @@ const arrayMD = ['https://lineadecodigo.com/javascript/extraer-partes-una-url-ja
   'https://parzibyte.me/blog/2018/12/27/leer-archivo-node-js-fs-readline/',
   'https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/concat',
   'https://www.geeksforgeeks.org/javascript-match-function/',
-  'https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise/then'];
+  'https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise/then',
+  'https://seoquito.com/como-encontrar-enlaces-rotos/ko',
+  'https://neoattack.com/proyectos/'];
 // Test de readExtension
 describe('La función verifyExtensionMD ', () => {
   it('Devuelve true si la extension del archivo es .md', () => {
