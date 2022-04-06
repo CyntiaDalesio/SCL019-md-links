@@ -41,7 +41,6 @@ function verifityLink(link) {
 }
 
 function read(file) {
-  console.log('estoy dentro de read');
   const promise = new Promise((resolve) => {
     const array = [];
     const lector = readline.createInterface({
