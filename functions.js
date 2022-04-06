@@ -4,10 +4,46 @@ const {
 } = require('fs');
 const path = require('path');
 const readline = require('readline');
-// const http = require('http');
-// const url = require('url');
+const http = require('http');
+const url = require('url');
 
+const json = [];
 let arrayLink = [];
+function readJson() {
+  return json;
+}
+function verifityLink(link) {
+  return new Promise((resolve) => {
+    const options = {
+      method: 'HEAD',
+      host: url.parse(link).host,
+      port: 80,
+      path: url.parse(link).pathname,
+    };
+
+    const req = http.request(options, (res) => {
+      // console.log(`statusCode: ${res.statusCode}`);
+      const nuevaData = {
+        linkname: link,
+        Code: res.statusCode,
+        status: res.statusCode <= 399,
+      };
+      // console.log('jason', json);
+      resolve(nuevaData);
+    });
+
+    req.on('error', (error) => {
+      // console.error(error);
+      const newData = {
+
+
+      };
+      resolve(newData);
+    });
+
+    req.end();
+  });
+}
 
 function read(file) {
   console.log('estoy dentro de read');
@@ -65,4 +101,5 @@ exports.existPath = existPath;
 exports.listFile = listFile;
 exports.isFile = isFile;
 exports.read = read;
-// exports.api = api;
+exports.verifityLink = verifityLink;
+exports.readJson = readJson;
