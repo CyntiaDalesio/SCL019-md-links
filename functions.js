@@ -82,7 +82,7 @@ function listFile(resp) {
 // verifico si el path es un archivo
 function isFile(resp) {
   const stats = statSync(resp); // metadata
-  console.log('Es archivo: ', stats.isFile());
+  // console.log('Es archivo: ', stats.isFile());
   return stats.isFile();
 }
 
