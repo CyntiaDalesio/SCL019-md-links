@@ -7,11 +7,8 @@ const readline = require('readline');
 const http = require('http');
 const url = require('url');
 
-const json = [];
 let arrayLink = [];
-function readJson() {
-  return json;
-}
+
 function verifityLink(link) {
   return new Promise((resolve) => {
     const options = {
@@ -22,21 +19,19 @@ function verifityLink(link) {
     };
 
     const req = http.request(options, (res) => {
-      // console.log(`statusCode: ${res.statusCode}`);
       const nuevaData = {
         linkname: link,
         Code: res.statusCode,
         status: res.statusCode <= 399,
       };
-      // console.log('jason', json);
       resolve(nuevaData);
     });
 
     req.on('error', (error) => {
       // console.error(error);
       const newData = {
-
-
+        linkname: link,
+        status: false,
       };
       resolve(newData);
     });
@@ -47,7 +42,7 @@ function verifityLink(link) {
 
 function read(file) {
   console.log('estoy dentro de read');
-  const promise = new Promise((resolve, reject) => {
+  const promise = new Promise((resolve) => {
     const array = [];
     const lector = readline.createInterface({
       input: createReadStream(file),
@@ -62,7 +57,6 @@ function read(file) {
     }).on('close', () => {
       resolve(array);
     });
-    console.log(reject);
   });
   return promise;
 }
@@ -102,4 +96,3 @@ exports.listFile = listFile;
 exports.isFile = isFile;
 exports.read = read;
 exports.verifityLink = verifityLink;
-exports.readJson = readJson;

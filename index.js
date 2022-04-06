@@ -3,8 +3,6 @@ const colors = require('colors/safe');
 const functions = require('./functions.js');
 
 const arrayJson = [];
-const urlOk = [];
-const urlNotOk = [];
 const interfazCaptura = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
@@ -37,31 +35,17 @@ interfazCaptura.question('Ingrese la ruta: ', (respuesta) => {
       .then((arrayLink) => {
         console.log('El array1 tiene que el valor:', arrayLink);
         const promiseArr = arrayLink.map((url) => functions.verifityLink(url).then((status) => {
-          // if (status) {
-          //   urlOk.push(url);
-          // } else {
-          //   urlNotOk.push(url);
-          // }
           arrayJson.push(status);
         })
           .catch((err) => {
             console.log('La ruta  no existe');
             console.log(err);
           }));
-        return promiseArr;
+        return Promise.all(promiseArr);
       })
-      .then((promiseArr) => {
-        Promise.all(promiseArr).then(() => {
-          // console.log('URLs funcionando ', urlOk);
-          // console.log('URLs caidas o sin acceso', urlNotOk);
-          // const ArrayLinkWithCode = functions.readJson();
-          console.log('El final es:', arrayJson);
-        });
-        return arrayJson;
+      .then(() => {
+        console.log('El final es:', arrayJson);
       });
-    // .then((arrayJson) => {
-    //   console.log('El json final es:', arrayJson);
-    // });
   } else {
     console.log('No ha ingresado ninguna ruta');
   }
