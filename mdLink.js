@@ -8,7 +8,7 @@ const mdLink = function (path, options = {}) {
     let arrayMD = [];
     if (path !== '') {
       functions.existPath(path).then(() => {
-        console.log('path linea 1', path);
+        // console.log('path linea 1', path);
         if (!functions.pathAbsolute(path)) {
           console.log('la ruta ingresada es RELATIVA. . . se transformará en absoluta');
           answer = functions.pathTransformationAbsolute(path);

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const process = require('process');
-const { mdLink } = require('./main');
+const { mdLink } = require('./mdLink');
 
 console.log('-------------------iniciando -------------------');
 const args = process.argv;
