@@ -17,7 +17,7 @@ Dependiendo de las opciones puede:
 
 ## 1. Flujo de diagramas
 
-[diagrama](img\diagramaFlujo.png) 
+![diagrama](https://github.com/CyntiaDalesio/SCL019-md-links/blob/branchCyntia/img/diagramaFlujo.png) 
 
 
 ## 2. Guía de uso
@@ -35,21 +35,21 @@ Dependiendo de las opciones puede:
 
         Devuelve:
 
-  ![statsvalidate](img\statsvalidate.png)
+  ![statsvalidate](https://github.com/CyntiaDalesio/SCL019-md-links/blob/branchCyntia/img/statsvalidate.PNG)
 
   Si en cambio ingresamos:
         $ mdLink "C:/Users/Cyntia/Desktop/LABORATORIA/Md-Link/SCL019-md-links/hola/readmeExample.md" --validate
 
         Retorna: 
 
-  ![validate](img\validate.png) 
+  ![validate](https://github.com/CyntiaDalesio/SCL019-md-links/blob/branchCyntia/img/validate.PNG) 
 
         Si por el contrario escribimos:
 
           $ mdLink "C:/Users/Cyntia/Desktop/LABORATORIA/Md-Link/SCL019-md-links/hola/readmeExample.md" --stats 
           Devuelve:
 
-  ![validate](img\stats.png) 
+  ![validate](https://github.com/CyntiaDalesio/SCL019-md-links/blob/branchCyntia/img/stats.PNG) 
 
 
 ## 3. Fuente
