@@ -1,6 +1,6 @@
 const fs = require('fs/promises');
 const {
-  constants, readdirSync, statSync, createReadStream,
+  constants, statSync, createReadStream,
 } = require('fs');
 const path = require('path');
 const readline = require('readline');
