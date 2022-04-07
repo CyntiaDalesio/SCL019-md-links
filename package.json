@@ -9,9 +9,17 @@
   "engines": {
     "node": ">=14.x"
   },
+  "keywords": [
+    "md-Links",
+    "Markdown",
+    "links"
+  ],
   "autor": {
     "name": "Cyntia Dalesio",
     "email": "cyntiadalesio@gmail.com"
+  },
+  "repository": {
+    "url": "https://github.com/CyntiaDalesio/SCL019-md-links"
   },
   "dependencies": {
     "colors": "^1.4.0",
