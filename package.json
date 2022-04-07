@@ -1,9 +1,9 @@
 {
   "name": "md-links-cyntia",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "description": "Módulo para verificar archivos .md",
   "main": "./mdLink.js",
-  "bin":{
+  "bin": {
     "mdLink": "./index.js"
   },
   "engines": {
@@ -11,8 +11,8 @@
   },
   "autor": {
     "name": "Cyntia Dalesio",
-    "email":"cyntiadalesio@gmail.com"
-    },
+    "email": "cyntiadalesio@gmail.com"
+  },
   "dependencies": {
     "colors": "^1.4.0",
     "eslint": "^8.12.0",
@@ -34,6 +34,6 @@
   },
   "scripts": {
     "test": "jest --coverage --verbose",
-    "dev":"node index.js"
+    "dev": "node index.js"
   }
 }
