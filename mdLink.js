@@ -1,16 +1,16 @@
 const colors = require('colors/safe');
 const functions = require('./functions.js');
 
-const mdLink = function (path, options = {}) {
-  return new Promise((resolve) => {
+const mdLink = (path, options) => {
+  console.log();
+  return new Promise((resolve, reject) => {
     let answer = '';
     const arrayJson = [];
     let arrayMD = [];
     if (path !== '') {
       functions.existPath(path).then(() => {
-        // console.log('path linea 1', path);
         if (!functions.pathAbsolute(path)) {
-          console.log('la ruta ingresada es RELATIVA. . . se transformará en absoluta');
+          // console.log('la ruta ingresada es RELATIVA. . . se transformará en absoluta');
           answer = functions.pathTransformationAbsolute(path);
         } else {
           answer = path;
@@ -18,9 +18,11 @@ const mdLink = function (path, options = {}) {
         return answer;
       })
         .then((answer1) => {
-          if (!functions.isFile(answer1)) throw new TypeError(console.log('No puede ingresar una carpeta'));
+          if (!functions.isFile(answer1)) throw new Error('No puede ingresar una carpeta');
           if (functions.verifyExtensionMD(answer1)) {
             arrayMD = functions.read(answer1);
+          } else {
+            throw new Error('El archivo no tiene extensión .md');
           }
           return arrayMD;
         })
@@ -79,8 +81,16 @@ const mdLink = function (path, options = {}) {
             }
           }
           resolve(arrayJson);
+        })
+        .catch((err) => {
+          if (Error.code === 'ENOENT:') {
+            console.log('Path no encontrada');
+          } else {
+            console.log(err.message);
+          }
         });
     }
   });
 };
+
 module.exports = { mdLink };
