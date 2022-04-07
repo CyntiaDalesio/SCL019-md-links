@@ -1,6 +1,7 @@
 {
-  "name": "md-links-Cyntia",
+  "name": "md-links-cyntia",
   "version": "0.1.0",
+  "description": "Módulo para verificar archivos .md",
   "main": "./mdLink.js",
   "bin":{
     "mdLink": "./index.js"

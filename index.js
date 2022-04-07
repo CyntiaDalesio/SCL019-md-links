@@ -2,7 +2,7 @@
 const process = require('process');
 const { mdLink } = require('./mdLink');
 
-console.log('-------------------Iniciando Librería -------------------');
+// console.log('-------------------Iniciando Librería -------------------');
 const args = process.argv;
 
 const options = {};
@@ -20,7 +20,7 @@ if (args[0] === 'mdLink') {
   path = args[2];
 }
 mdLink(path, options).then(() => {
-  console.log('termina correctamente el programa');
+  console.log();
 }).catch((err) => {
   console.log(err.message);
 });

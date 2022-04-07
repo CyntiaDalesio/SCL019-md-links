@@ -2,7 +2,7 @@ const colors = require('colors/safe');
 const functions = require('./functions.js');
 
 const mdLink = (path, options) => {
-  console.log('Iniciando');
+  console.log();
   return new Promise((resolve, reject) => {
     let answer = '';
     const arrayJson = [];
@@ -10,7 +10,7 @@ const mdLink = (path, options) => {
     if (path !== '') {
       functions.existPath(path).then(() => {
         if (!functions.pathAbsolute(path)) {
-          console.log('la ruta ingresada es RELATIVA. . . se transformará en absoluta');
+          // console.log('la ruta ingresada es RELATIVA. . . se transformará en absoluta');
           answer = functions.pathTransformationAbsolute(path);
         } else {
           answer = path;
@@ -83,7 +83,7 @@ const mdLink = (path, options) => {
           resolve(arrayJson);
         })
         .catch((err) => {
-          if (Error.code === 'ENOENT') {
+          if (Error.code === 'ENOENT:') {
             console.log('Path no encontrada');
           } else {
             console.log(err.message);
