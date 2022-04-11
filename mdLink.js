@@ -3,18 +3,12 @@ const functions = require('./functions.js');
 
 const mdLink = (path, options) => {
   console.log();
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     let answer = '';
-    const arrayJson = [];
     let arrayMD = [];
-    if (path !== '') {
+    if (path !== undefined) {
       functions.existPath(path).then(() => {
-        if (!functions.pathAbsolute(path)) {
-          // console.log('la ruta ingresada es RELATIVA. . . se transformará en absoluta');
-          answer = functions.pathTransformationAbsolute(path);
-        } else {
-          answer = path;
-        }
+        !functions.pathAbsolute(path) ? answer = functions.pathTransformationAbsolute(path) : answer = path;
         return answer;
       })
         .then((answer1) => {
@@ -25,18 +19,11 @@ const mdLink = (path, options) => {
             throw new Error('El archivo no tiene extensión .md');
           }
           return arrayMD;
-        })
-        .then((arrayLink) => {
-          const promiseArr = arrayLink.map((url) => functions.verifityLink(url).then((status) => {
-            arrayJson.push(status);
-          })
-            .catch((err) => {
-              console.log('La ruta  no existe');
-              console.log(err);
-            }));
+        }).then((arrayLink) => {
+          const promiseArr = arrayLink.map((url) => functions.verifityLink(url));
           return Promise.all(promiseArr);
         })
-        .then(() => {
+        .then((arrayJson) => {
           let countValid = 0;
           let countInvalid = 0;
           if (options.validate && options.stats) {
@@ -83,12 +70,15 @@ const mdLink = (path, options) => {
           resolve(arrayJson);
         })
         .catch((err) => {
-          if (Error.code === 'ENOENT:') {
+          console.log(err);
+          if (err.code === 'ENOENT') {
             console.log('Path no encontrada');
           } else {
             console.log(err.message);
           }
         });
+    } else {
+      console.log('no ingresó ruta');
     }
   });
 };
