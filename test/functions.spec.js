@@ -1,10 +1,10 @@
 const functions = require('../functions.js');
 
-const st2 = 'hola.txt';
-const st3 = 'C:\\Users\\Cyntia\\Desktop\\LABORATORIA\\Md-Link\\SCL019-md-links\\hola\\otraCarpeta.md';
+const st2 = 'index.js';
+const st3 = 'C:\\Users\\Cyntia\\Desktop\\LABORATORIA\\Md-Link\\SCL019-md-links\\DirectoryTest\\File.md';
 const st = 'README.md';
 const path = 'C:\\Users\\Cyntia\\Desktop\\LABORATORIA\\Md-Link\\SCL019-md-links\\README.md';
-const pathLink = 'C:\\Users\\Cyntia\\Desktop\\LABORATORIA\\Md-Link\\SCL019-md-links\\hola\\readmeExample.md';
+const pathLink = 'C:\\Users\\Cyntia\\Desktop\\LABORATORIA\\Md-Link\\SCL019-md-links\\DirectoryTest\\readmeExample.md';
 const arrayMD = ['https://lineadecodigo.com/javascript/extraer-partes-una-url-javascript/',
   'https://parzibyte.me/blog/2018/12/27/leer-archivo-node-js-fs-readline/',
   'https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/concat',
@@ -31,7 +31,7 @@ describe('La función pathTransformationAbsolute ', () => {
   it(`Transforma la ruta relativa ${st2} en absoluta`, () => {
     console.log(st2);
 
-    expect(functions.pathTransformationAbsolute(st2)).toBe('C:\\Users\\Cyntia\\Desktop\\LABORATORIA\\Md-Link\\SCL019-md-links\\hola.txt');
+    expect(functions.pathTransformationAbsolute(st2)).toBe('C:\\Users\\Cyntia\\Desktop\\LABORATORIA\\Md-Link\\SCL019-md-links\\index.js');
   });
 });
 // Test de pathAbsolute
