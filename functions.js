@@ -1,3 +1,4 @@
+const colors = require('colors/safe');
 const fs = require('fs/promises');
 const {
   constants, statSync, createReadStream,
@@ -8,7 +9,29 @@ const http = require('http');
 const url = require('url');
 
 let arrayLink = [];
-
+function stats(array) {
+  let countValid = 0;
+  let countInvalid = 0;
+  array.forEach((e) => {
+    if (e.status) {
+      countValid += 1;
+    } else {
+      countInvalid += 1;
+    }
+  });
+  console.log(colors.yellow('link encontrados:', array.length));
+  console.log(colors.green('link validos:', countValid));
+  console.log(colors.red('link rotos:', countInvalid));
+}
+function validate(array) {
+  array.forEach((e) => {
+    if (e.status) {
+      console.log(colors.green(`Link: ${e.linkname} Status: ${e.status}`));
+    } else {
+      console.log(colors.red(`Link: ${e.linkname} Status: ${e.status}`));
+    }
+  });
+}
 function verifityLink(link) {
   return new Promise((resolve) => {
     const options = {
@@ -76,8 +99,8 @@ function existPath(resp) {
 }
 // verifico si el path es un archivo
 function isFile(resp) {
-  const stats = statSync(resp); // metadata
-  return stats.isFile();
+  const stat = statSync(resp); // metadata
+  return stat.isFile();
 }
 
 // exporto las funciones que necesito
@@ -88,3 +111,5 @@ exports.existPath = existPath;
 exports.isFile = isFile;
 exports.read = read;
 exports.verifityLink = verifityLink;
+exports.validate = validate;
+exports.stats = stats;
