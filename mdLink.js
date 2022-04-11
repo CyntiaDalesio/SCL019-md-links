@@ -1,4 +1,3 @@
-const colors = require('colors/safe');
 const functions = require('./functions.js');
 
 const mdLink = (path, options) => {
@@ -24,47 +23,15 @@ const mdLink = (path, options) => {
           return Promise.all(promiseArr);
         })
         .then((arrayJson) => {
-          let countValid = 0;
-          let countInvalid = 0;
           if (options.validate && options.stats) {
-            arrayJson.forEach((e) => {
-              if (e.status) {
-                countValid += 1;
-              } else {
-                countInvalid += 1;
-              }
-            });
-            console.log(colors.yellow('link encontrados:', arrayJson.length));
-            console.log(colors.green('link validos:', countValid));
-            console.log(colors.red('link rotos:', countInvalid));
-            arrayJson.forEach((e) => {
-              if (e.status) {
-                console.log(colors.green(`Link: ${e.linkname} Status: ${e.status}`));
-              } else {
-                console.log(colors.red(`Link: ${e.linkname} Status: ${e.status}`));
-              }
-            });
+            functions.stats(arrayJson);
+            functions.validate(arrayJson);
           } else {
             if (options.stats) {
-              console.log(colors.yellow('link encontrados:', arrayJson.length));
-              arrayJson.forEach((e) => {
-                if (e.status) {
-                  countValid += 1;
-                } else {
-                  countInvalid += 1;
-                }
-              });
-              console.log(colors.green('link validos:', countValid));
-              console.log(colors.red('link rotos:', countInvalid));
+              functions.stats(arrayJson);
             }
             if (options.validate) {
-              arrayJson.forEach((e) => {
-                if (e.status) {
-                  console.log(colors.green(`Link: ${e.linkname} Status: ${e.status}`));
-                } else {
-                  console.log(colors.red(`Link: ${e.linkname} Status: ${e.status}`));
-                }
-              });
+              functions.validate(arrayJson);
             }
           }
           resolve(arrayJson);
