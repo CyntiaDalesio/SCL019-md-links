@@ -90,7 +90,7 @@ const verifyExtensionMD = (resp) => path.extname(resp) === '.md';
 const pathAbsolute = (resp) => path.isAbsolute(resp);
 
 // transformo la ruta relativa en absoluta
-const pathTransformationAbsolute = (resp) => path.resolve(resp);
+const pathTranfAbsolute = (resp) => path.resolve(resp);
 
 // verifico si la ruta o archivo existe en la computadora
 
@@ -106,7 +106,7 @@ function isFile(resp) {
 // exporto las funciones que necesito
 exports.verifyExtensionMD = verifyExtensionMD;
 exports.pathAbsolute = pathAbsolute;
-exports.pathTransformationAbsolute = pathTransformationAbsolute;
+exports.pathTranfAbsolute = pathTranfAbsolute;
 exports.existPath = existPath;
 exports.isFile = isFile;
 exports.read = read;

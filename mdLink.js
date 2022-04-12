@@ -3,11 +3,10 @@ const functions = require('./functions.js');
 const mdLink = (path, options) => {
   console.log();
   return new Promise((resolve) => {
-    let answer = '';
     let arrayMD = [];
     if (path !== undefined) {
       functions.existPath(path).then(() => {
-        !functions.pathAbsolute(path) ? answer = functions.pathTransformationAbsolute(path) : answer = path;
+        const answer = !functions.pathAbsolute(path) ? functions.pathTranfAbsolute(path) : path;
         return answer;
       })
         .then((answer1) => {

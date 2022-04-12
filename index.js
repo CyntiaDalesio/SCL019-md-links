@@ -4,7 +4,6 @@ const { mdLink } = require('./mdLink');
 const args = process.argv;
 
 const options = {};
-let path;
 
 if (args.some((x) => x === '--validate')) {
   options.validate = true;
@@ -12,7 +11,7 @@ if (args.some((x) => x === '--validate')) {
 if (args.some((x) => x === '--stats')) {
   options.stats = true;
 }
-args[0] === 'mdLink' ? path = args[1] : path = args[2];
+const path = args[0] === 'mdLink' ? args[1] : args[2];
 
 mdLink(path, options).then(() => {
   console.log();
